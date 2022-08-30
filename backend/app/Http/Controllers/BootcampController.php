@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Bootcamp;
+use Illuminate\Support\Facades\Hash;
+use File;
 
 class BootcampController extends Controller
 {
@@ -13,7 +16,8 @@ class BootcampController extends Controller
      */
     public function index()
     {
-        echo "Aquí se va a mostrar todos los Bootcamp";
+        //echo "Aquí se va a mostrar todos los Bootcamp";
+        return Bootcamp::all();
     }
 
     /**
@@ -25,7 +29,21 @@ class BootcampController extends Controller
     public function store(Request $request)
     {
         //Aquí se inserta un bootcamp
-        echo "Aquí se inserta un bootcamp";
+        //echo "Aquí se inserta un bootcamp";
+        //Verificar que llegó aquí el payload
+        //return $request->all();
+
+        //Registrar el Bootcamp a partir del payload
+        $newBootcamp = Bootcamp::create(
+            [
+                "name" => $request->input("name"),
+                "description" => $request->input("description"),
+                "website" => $request->input("website"),
+                "phone" => $request->input("phone"),
+                "user_id" => $request->input("user_id"),
+            ]
+        );
+        return $newBootcamp;
     }
 
     /**
@@ -37,7 +55,8 @@ class BootcampController extends Controller
     public function show($id)
     {
         //Mostrar un bootcamp cuyo id es: $id
-        echo "Mostrar un bootcamp cuyo id es: $id";
+        //echo "Mostrar un bootcamp cuyo id es: $id";
+        return Bootcamp::find($id);
     }
 
     /**

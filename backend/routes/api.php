@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BootcampCOntroller;
+use App\Http\Controllers\BootcampController;
 
 /*
 |--------------------------------------------------------------------------
