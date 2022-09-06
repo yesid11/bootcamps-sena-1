@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "3771a008-cffa-4e6e-a9eb-2f9e17dd756f",
+		"_postman_id": "ff677f60-699c-442b-95fa-22d6406b0647",
 		"name": "Api bootcamp sena",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -34,7 +34,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/bootcamps/9",
+					"raw": "http://127.0.0.1:8000/api/bootcamps/3",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -46,17 +46,60 @@
 					"path": [
 						"api",
 						"bootcamps",
-						"9"
+						"3"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "crear bootcamp",
+			"name": "Crear nuevo Bootcamp",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"name\" : \"UX devcamp\",\r\n        \"description\" : \"Frontend for Backend devs\",\r\n        \"website\" : \"UX.dev/bootcamps\",\r\n        \"phone\" : \"(444)444-444\",\r\n        \"average_rating\" : 1,\r\n        \"average_cost\" : 0,\r\n        \"user_id\" : 1\r\n    }"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/bootcamps",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"bootcamps"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear nuevo Bootcamp con errores",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"name\" : \"UX \",\r\n        \"description\" : \"Frontend for Backend devs\",\r\n        \"website\" : \"UX.dev/bootcamps\",\r\n        \"phone\" : \"(555)555-555\",\r\n        \"average_rating\" : 1,\r\n        \"average_cost\" :\"Sin costo\",\r\n        \"user_id\" : 2\r\n    }"
+				},
 				"url": {
 					"raw": "http://127.0.0.1:8000/api/bootcamps",
 					"protocol": "http",
@@ -80,8 +123,12 @@
 			"request": {
 				"method": "PUT",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n        \"name\": \"UX devcamp\",\r\n        \"id\": 4,\r\n        \"website\": \"UX.dev/bootcamps\"\r\n\r\n}"
+				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/bootcamps/9",
+					"raw": "http://127.0.0.1:8000/api/bootcamps/4",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -93,7 +140,7 @@
 					"path": [
 						"api",
 						"bootcamps",
-						"9"
+						"4"
 					]
 				}
 			},
@@ -118,6 +165,39 @@
 						"api",
 						"bootcamps",
 						"9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear nuevo Bootcamp con errores",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"name\" : \"UX \",\r\n        \"description\" : \"Frontend for Backend devs\",\r\n        \"website\" : \"UX.dev/bootcamps\",\r\n        \"phone\" : \"(555)555-555\",\r\n        \"average_rating\" : 1,\r\n        \"average_cost\" :\"Sin costo\",\r\n        \"user_id\" : 2\r\n    }"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/bootcamps",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"bootcamps"
 					]
 				}
 			},
