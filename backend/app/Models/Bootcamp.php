@@ -10,5 +10,5 @@ class Bootcamp extends Model
     use HasFactory;
 
     //Fillable: Permite insertar varias instancias al tiempo
-    protected $fillable=[ 'name' , 'description' , 'website' , 'phone' , ' user_id'];
+    protected $fillable=[ 'name' , 'description' , 'website' , 'phone' , 'user_id'];
 }

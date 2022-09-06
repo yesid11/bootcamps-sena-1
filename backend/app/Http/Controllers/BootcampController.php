@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Bootcamp;
 use Illuminate\Support\Facades\Hash;
 use File;
+use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\StoreBootcampRequest;
+use App\Http\Resources\BootcampResource;
+use App\Http\Resources\BootcampCollection;
 
 class BootcampController extends Controller
 {
@@ -18,10 +22,8 @@ class BootcampController extends Controller
     {
         //echo "Aquí se va a mostrar todos los Bootcamp";
         //return Bootcamp::all();
-        return response()->json([
-            "success" => true,
-            "data" => Bootcamp::all(),
-        ], 200);
+        return response()->json(new BootcampCollection(Bootcamp::all())
+                                , 200);
     }
 
     /**
@@ -30,7 +32,7 @@ class BootcampController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreBootcampRequest $request)
     {
         //Aquí se inserta un bootcamp
         //echo "Aquí se inserta un bootcamp";
@@ -38,17 +40,19 @@ class BootcampController extends Controller
         //return $request->all();
 
         //Registrar el Bootcamp a partir del payload
-        $newBootcamp = new Bootcamp();
-        $newBootcamp->name = $request->input("name");
+        $newBootcamp = Bootcamp::create(
+            $request->all()
+        );
+        /*$newBootcamp->name = $request->input("name");
         $newBootcamp->description = $request->input("description") ;
         $newBootcamp->website = $request->input("website");
         $newBootcamp->phone = $request->input("phone");       
         $newBootcamp->user_id = $request->input("user_id");
-        $newBootcamp->save();
+        $newBootcamp->save();*/
             
         
         //return $newBootcamp;
-        return response()->json(
+        return response(
             [
                 "success" => true,
                 "data" => $newBootcamp
@@ -70,7 +74,7 @@ class BootcampController extends Controller
         return response()->json(
             [
                 "success" => true,
-                "data" => Bootcamp::find($id)
+                "data" => new BootcampResource(Bootcamp::find($id))
             ],200
         );
     }
@@ -94,12 +98,11 @@ class BootcampController extends Controller
             $request->all()
         );
 
-        //3. Hacer le response respectivo
-        //return $bootcamp;
+        //3. Hacer el response respectivo
         return response()->json(
             [
                 "success" => true,
-                "data" => $bootcamp
+                "data" =>  new BootcampResource($bootcamp)
             ],200
         );
     }
