@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('title', 100);
             $table->string('description', 150);
             $table->integer('weeks');
-            $table->float('enroll_cost', 2, 2);
-            $table->string('minimum_skill',180);
+            $table->integer('enroll_cost', 10);
+            $table->string('minimum_skill', 180);
             $table->foreignId('bootcamp_id')->constrained();
             $table->timestamps();
         });
